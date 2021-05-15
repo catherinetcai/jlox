@@ -61,6 +61,14 @@ class Scanner {
                     while (peek() != '\n' && !isAtEnd()) {
                         advance();
                     }
+                } else if (match('*')) {
+                    // Now we're handling /* */ comments, so keep looking until we hit end 
+                    while (peek() != '*' && peekNext() != '/' && !isAtEnd()) {
+                        if (peek() == '\n') {
+                            line++;
+                            advance();
+                        }
+                    }
                 } else {
                     addToken(SLASH);
                 }
@@ -177,8 +185,8 @@ class Scanner {
         while (peek() != '"' && !isAtEnd()) {
             if (peek() == '\n') {
                 line++;
-                advance();
             }
+            advance();
         }
 
         if (isAtEnd()) {
