@@ -66,8 +66,8 @@ class Scanner {
                     while (peek() != '*' && peekNext() != '/' && !isAtEnd()) {
                         if (peek() == '\n') {
                             line++;
-                            advance();
                         }
+                        advance();
                     }
                 } else {
                     addToken(SLASH);
