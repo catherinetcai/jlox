@@ -5,9 +5,6 @@ class AstPrinter implements Expr.Visitor<String>{
         return expr.accept(this);
     }
 
-    String printRpn(Expr expr) {
-    }
-
     @Override
     public String visitBinaryExpr(Expr.Binary expr) {
         return parenthesize(expr.operator.lexeme,
@@ -47,6 +44,8 @@ class AstPrinter implements Expr.Visitor<String>{
     }
 
     /*
+    -123 * 45.67
+    Prints: (* (- 123) (group 45.67))
     public static void main(String[] args) {
         Expr expression = new Expr.Binary(
             new Expr.Unary(

@@ -43,6 +43,7 @@ class RpnPrinter implements Expr.Visitor<String>{
         return builder.toString();
     }
 
+    // Print 123 - 45.67 *? 
     public static void main(String[] args) {
         Expr expression = new Expr.Binary(
             new Expr.Unary(
